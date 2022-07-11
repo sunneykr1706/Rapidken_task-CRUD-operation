@@ -1,0 +1,105 @@
+<nav class="navbar bg-light">
+    <form class="container-fluid justify-content-start">
+        <button class="btn btn-outline-dark me-2" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+            (click)="newEmploye()">+New employee</button>
+        <button class="btn btn-outline-success me-2" type="button" (click)="showList()">List-View</button>
+        <button class="btn btn-outline-primary me-2" type="button" (click)="cardView()">Card View</button>
+    </form>
+</nav>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Employee Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="employeForm">
+                    <input type="text" class="form-control" placeholder="Name" formControlName="name">
+                    <br>
+                    <input type="text" class="form-control" placeholder="Position" formControlName="position">
+                    <br>
+                    <input type="text" class="form-control" placeholder="About" formControlName="about">
+                    <br>
+                    <input type="date" class="form-control" placeholder="Joining Date" formControlName="joiningdate">
+                    <br>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    &nbsp;
+                    <button type="button" class="btn btn-primary" (click)="onSubmit()">Submit Form</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table" *ngIf="listShow">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Position</th>
+            <th scope="col">About</th>
+            <th scope="col">Joining Date</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        <tr *ngFor="let row of employeDetails">
+            <td>{{row.name}}</td>
+            <td>{{row.position}}</td>
+            <td>{{row.about}}</td>
+            <td>{{row.joiningdate}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table" *ngIf="cardShow">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Position</th>
+            <th scope="col">About</th>
+            <th scope="col">Joining Date</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        <tr *ngFor="let row of employeDetails">
+            <td>{{row.name}}</td>
+            <td>{{row.position}}</td>
+            <td>{{row.about}}</td>
+            <td>{{row.joiningdate}}</td>
+            <td>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdropUpdate" (click)="editEmploye(row.name)">Edit</button>
+                &nbsp;
+                <button type="button" class="btn btn-danger" (click)="removeEmploye(row.name)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="modal fade" id="staticBackdropUpdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Employee Details Update</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="employeForming">
+                    <input type="text" class="form-control" placeholder="Name" formControlName="name">
+                    <br>
+                    <input type="text" class="form-control" placeholder="Position" formControlName="position">
+                    <br>
+                    <input type="text" class="form-control" placeholder="About" formControlName="about">
+                    <br>
+                    <input type="date" class="form-control" placeholder="Joining Date" formControlName="joiningdate">
+                    <br>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    &nbsp;
+                    <button type="button" class="btn btn-primary" (click)="updatemploye()">Update Form</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

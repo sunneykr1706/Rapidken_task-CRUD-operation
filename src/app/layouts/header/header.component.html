@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg bg-warning">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Rapidken.Ai</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="d-flex" role="search" style="margin-left: -400px;">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit" (click)="searchEmployelist()">Search</button>
+        </form>
+    </div>
+    <div class="dropdown" style="margin-right: 20px;">
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Navigation Menu
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" routerLink="emp">Employee</a></li>
+          <li><a class="dropdown-item" routerLink="login">Login</a></li>
+        </ul>
+      </div>
+</nav>
+
+<!-- <app-employee *ngIf="router.url=='/emp'" (emp)="getEmployeDetails($event)"></app-employee> -->
+
+<!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-border-width" viewBox="0 0 16 16">
+  <path d="M0 3.5A.5.5 0 0 1 .5 3h15a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-2zm0 5A.5.5 0 0 1 .5 8h15a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1zm0 4a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+</svg> -->
+
+<!-- <i class="bi bi-border-width"></i> -->
