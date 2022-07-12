@@ -54,7 +54,7 @@
     <pagination-controls (pageChange)="p= $event"></pagination-controls>
 </table>
 
-<table class="table" *ngIf="cardShow">
+<!-- <table class="table" *ngIf="cardShow">
     <thead>
         <tr>
             <th scope="col">Name</th>
@@ -77,7 +77,22 @@
         </tr>
     </tbody>
     <pagination-controls (pageChange)="p= $event"></pagination-controls>
-</table>
+</table> -->
+<div *ngIf="cardShow">
+    <div class="card" style="width: 18rem;" *ngFor="let row of employeDetails | paginate:{itemsPerPage:5, currentPage:p};">
+        <div class="card-body">
+            <h2 class="card-title">{{row.name}}</h2>
+            <h5 class="card-subtitle mb-2 text-muted">{{row.position}}</h5>
+            <h6 class="card-text">{{row.about}}</h6>
+            <h6>{{row.joiningdate}}</h6>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdropUpdate"
+                (click)="editEmploye(row.name)">Edit</button>
+            <button type="button" class="btn btn-danger" (click)="removeEmploye(row.name)">Delete</button>
+        </div>
+    </div>
+    <pagination-controls (pageChange)="p= $event"></pagination-controls>
+</div>
+
 
 <div class="modal fade" id="staticBackdropUpdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
