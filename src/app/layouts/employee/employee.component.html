@@ -44,13 +44,14 @@
         </tr>
     </thead>
     <tbody class="table-group-divider">
-        <tr *ngFor="let row of employeDetails">
+        <tr *ngFor="let row of employeDetails | paginate:{itemsPerPage:5, currentPage:p};">
             <td>{{row.name}}</td>
             <td>{{row.position}}</td>
             <td>{{row.about}}</td>
             <td>{{row.joiningdate}}</td>
         </tr>
     </tbody>
+    <pagination-controls (pageChange)="p= $event"></pagination-controls>
 </table>
 
 <table class="table" *ngIf="cardShow">
@@ -63,7 +64,7 @@
         </tr>
     </thead>
     <tbody class="table-group-divider">
-        <tr *ngFor="let row of employeDetails">
+        <tr *ngFor="let row of employeDetails | paginate:{itemsPerPage:5, currentPage:p};">
             <td>{{row.name}}</td>
             <td>{{row.position}}</td>
             <td>{{row.about}}</td>
@@ -75,6 +76,7 @@
             </td>
         </tr>
     </tbody>
+    <pagination-controls (pageChange)="p= $event"></pagination-controls>
 </table>
 
 <div class="modal fade" id="staticBackdropUpdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

@@ -15,6 +15,7 @@ export class EmployeeComponent implements OnInit {
   cardShow: boolean = false;
   employeDetails: EmployeDetails[] = [];
   index : number;
+  p: number = 1
   // @Output() emp = new EventEmitter<any>()
 
   constructor(public router: Router) { }
@@ -33,11 +34,16 @@ export class EmployeeComponent implements OnInit {
       'about': new FormControl(null, [Validators.required]),
       'joiningdate': new FormControl(null, [Validators.required])
     });
+
+    if (localStorage.getItem('Employee')) {
+      this.employeDetails = JSON.parse(localStorage.getItem('Employee'));
+    }
     
   }
 
   onSubmit() {
     this.employeDetails.push(this.employeForm.value);
+    localStorage.setItem('Employee', JSON.stringify(this.employeDetails))
     // this.emp.emit(this.employeDetails)
     // console.log("object value", this.emp.emit(this.employeDetails));
     // console.log("HHHHHH",this.employeDetails)

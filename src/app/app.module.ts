@@ -9,6 +9,7 @@ import { LoginComponent } from './layouts/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorComponent } from './layouts/error/error.component';
 import { EmployeeComponent } from './layouts/employee/employee.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { EmployeeComponent } from './layouts/employee/employee.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
