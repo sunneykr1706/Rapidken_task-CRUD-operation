@@ -79,7 +79,7 @@
     <pagination-controls (pageChange)="p= $event"></pagination-controls>
 </table> -->
 <div *ngIf="cardShow">
-    <div class="card" style="width: 18rem;" *ngFor="let row of employeDetails | paginate:{itemsPerPage:5, currentPage:p};">
+    <div class="card" style="width: 18rem; display: inline-block; margin: 10px;" *ngFor="let row of employeDetails | paginate:{itemsPerPage:5, currentPage:p};">
         <div class="card-body">
             <h2 class="card-title">{{row.name}}</h2>
             <h5 class="card-subtitle mb-2 text-muted">{{row.position}}</h5>
