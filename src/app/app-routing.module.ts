@@ -7,9 +7,11 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { LoginComponent } from './layouts/login/login.component';
 
 const routes: Routes = [
+  {path:'', redirectTo: 'emp', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path:'error', component: ErrorComponent},
-  {path:'emp', component: EmployeeComponent}
+  {path:'emp', component: EmployeeComponent},
+  {path:'**', redirectTo: 'emp'}
 ];
 
 @NgModule({

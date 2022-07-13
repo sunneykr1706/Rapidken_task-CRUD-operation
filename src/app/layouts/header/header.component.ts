@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from 'src/app.service';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,15 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  employeDetails=[];
-  // showing:boolean=false;
+  employeDetails:any=[];
+  userLoggedIn: boolean;
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private service: AppService) {
+    this.service.isUserLoggedIn.subscribe(value=>{
+      this.userLoggedIn = value;
+    })
+    console.log("jdjkshdkasjd",this.userLoggedIn)
+   }
 
   ngOnInit(): void {
   }
@@ -21,8 +27,19 @@ export class HeaderComponent implements OnInit {
     this.employeDetails=emp
   }
 
-  searchEmployelist(){
-    console.log(this.employeDetails);
+  searchEmployelist(items){
+    this.employeDetails =JSON.parse(localStorage.getItem("Employee"))
+    this.employeDetails = this.employeDetails.filter(item=>item.name.toLowerCase().includes(items.toLowerCase()))
+    console.log("detailssss",this.employeDetails);
+    this.service.data.next(this.employeDetails);
+
+  //   this.router.navigateByUrl('/emp', { skipLocationChange: false }).then(() => {
+  //     this.router.navigate(['/emp']);
+  // });
+  }
+
+  getValue(cmp){
+    console.log(cmp)
   }
 
 }

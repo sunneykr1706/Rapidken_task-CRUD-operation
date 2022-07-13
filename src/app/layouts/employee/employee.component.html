@@ -4,6 +4,7 @@
             (click)="newEmploye()">+New employee</button>
         <button class="btn btn-outline-success me-2" type="button" (click)="showList()">List-View</button>
         <button class="btn btn-outline-primary me-2" type="button" (click)="cardView()">Card View</button>
+        <button class="btn btn-outline-danger me-2" type="button" (click)="logoutUser()" *ngIf="userLoggedIn">LogOut</button>
     </form>
 </nav>
 
@@ -96,7 +97,7 @@
 
 
 <div class="modal fade" id="staticBackdropUpdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    aria-labelledby="staticBackdropLabel" aria-hidden="true" *ngIf="userLoggedIn">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

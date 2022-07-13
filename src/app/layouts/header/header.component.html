@@ -8,11 +8,11 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="d-flex" role="search" style="margin-left: -400px;">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit" (click)="searchEmployelist()">Search</button>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" #serch>
+            <button class="btn btn-outline-success" type="submit" (click)="searchEmployelist(serch.value)">Search</button>
         </form>
     </div>
-    <div class="dropdown" style="margin-right: 100px;">
+    <div class="dropdown" style="margin-right: 100px;" *ngIf="!userLoggedIn">
         <button class="btn btn-success" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: larger;">
           ☰
         </button>
@@ -22,6 +22,7 @@
         </ul>
       </div>
 </nav>
+
 
 <!-- <app-employee *ngIf="router.url=='/emp'" (emp)="getEmployeDetails($event)"></app-employee> -->
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppService } from 'src/app.service';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-
-  constructor(private router: Router) { }
+  userLoggedIn:boolean=false
+  constructor(private router: Router, private service: AppService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -29,10 +30,9 @@ export class LoginComponent implements OnInit {
 
   onLogin(){
     if (this.loginForm.value.email === 'admin@gmail.com' && this.loginForm.value.password === 'admin@2022') {
-      console.log('Yahoo done it');
-      this.router.navigateByUrl('');
+      this.service.isUserLoggedIn.next(true)
+      this.router.navigateByUrl('/emp');
     } else {
-      console.log('email & Password is not correct');
       this.router.navigateByUrl('error');
     }
   }
